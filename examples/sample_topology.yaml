@@ -1,0 +1,21 @@
+services:
+  - name: api
+    criticality: 5
+    cost_per_minute: 120
+    slo_target: 99.9
+    dependencies:
+      - auth
+      - database
+
+  - name: auth
+    criticality: 4
+    cost_per_minute: 60
+    slo_target: 99.95
+    dependencies:
+      - database
+
+  - name: database
+    criticality: 5
+    cost_per_minute: 200
+    slo_target: 99.99
+    dependencies: []
